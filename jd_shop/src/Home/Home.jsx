@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../Cart/Cart";
 
 const Home = () => {
-
+  const { count, setCount } = useContext(CartContext);
   const navigate = useNavigate();
 
   const [category, setCategory] = useState("jewelery");
@@ -35,9 +36,13 @@ const Home = () => {
     // console.log(e.target.outerText);
   }
 
-  const toProductDetails = (itemDetail) =>{
-    navigate('/details',{state:{itemDetail}});
-  }
+  const toProductDetails = (itemDetail) => {
+    navigate("/details", { state: { itemDetail } });
+  };
+
+  const handleAtC = () => {
+    setCount(count + 1);
+  };
 
   return (
     <>
@@ -50,13 +55,22 @@ const Home = () => {
       <div className="items">
         {items.map((itm) => (
           <>
-            <div className="card" onClick={()=>{toProductDetails(itm)}}>
-              <img src={itm.image} alt="Avatar" style={{ width: "100%" }} />
+            <div className="card">
+              <img
+                onClick={() => {
+                  toProductDetails(itm);
+                }}
+                src={itm.image}
+                alt="Avatar"
+                style={{ width: "100%" }}
+              />
               <div className="container">
-              <b><p className="price">${itm.price}</p></b>
+                <b>
+                  <p className="price">${itm.price}</p>
+                </b>
                 <p>{itm.title}</p>
               </div>
-              <button>Add to Cart</button>
+              <button onClick={handleAtC}>Add to Cart</button>
             </div>
           </>
         ))}
