@@ -39,16 +39,15 @@ const Home = () => {
         ))}
       </div>
       <div className="items">
-        {items.map((itm, index) => (
+        {items.map((itm) => (
           <>
             <div className="card">
               <img src={itm.image} alt="Avatar" style={{ width: "100%" }} />
               <div className="container">
                 <p>{itm.title}</p>
               </div>
-              <b>
-                <p className="price">${itm.price}</p>
-              </b>
+              <b><p className="price">${itm.price}</p></b>
+              <button>Add to Cart</button>
             </div>
           </>
         ))}

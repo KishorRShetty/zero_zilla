@@ -1,20 +1,26 @@
 .categories {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 .categories > p {
-  border: 1px solid gray;
-  border-radius: 5%;
   cursor: pointer;
-  padding: 5px;
+  padding: 8px;
+  background-color: #282c34;
+  color: white;
+  font-size: medium;
+}
+
+.categories > p:hover {
+  opacity: 0.7;
 }
 
 .items {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  gap:1rem;
 }
 
 .card {
@@ -44,5 +50,22 @@
 .container p {
   font-size: smaller;
 }
+.price {
+  text-align: center;
+}
 
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
 
+.card button:hover {
+  opacity: 0.7;
+}
