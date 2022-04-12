@@ -1,0 +1,27 @@
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #282c34;
+}
+
+.App-logo {
+  height: 10vh;
+  cursor: pointer;
+}
+
+.search-input {
+  height: 5vh;
+  flex:0.5;
+}
+
+.icons{
+    color: white;
+    font-size: x-large;
+}
+
+
+.nav > *{
+    padding: 10px;
+    cursor: pointer;
+}
