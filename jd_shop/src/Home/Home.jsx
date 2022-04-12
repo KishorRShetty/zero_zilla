@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
   const [category, setCategory] = useState("jewelery");
   const [categories, setCategories] = useState([]);
   const [items, setItems] = useState([]);
@@ -30,6 +34,11 @@ const Home = () => {
     setCategory(e.target.outerText);
     // console.log(e.target.outerText);
   }
+
+  const toProductDetails = (itemDetail) =>{
+    navigate('/details',{state:{itemDetail}});
+  }
+
   return (
     <>
       <div className="categories">
@@ -41,12 +50,12 @@ const Home = () => {
       <div className="items">
         {items.map((itm) => (
           <>
-            <div className="card">
+            <div className="card" onClick={()=>{toProductDetails(itm)}}>
               <img src={itm.image} alt="Avatar" style={{ width: "100%" }} />
               <div className="container">
+              <b><p className="price">${itm.price}</p></b>
                 <p>{itm.title}</p>
               </div>
-              <b><p className="price">${itm.price}</p></b>
               <button>Add to Cart</button>
             </div>
           </>
