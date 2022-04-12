@@ -3,6 +3,9 @@
   justify-content: space-between;
   align-items: center;
   background-color: #282c34;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the bottom of the page */
+  width: 100%;
 }
 
 .App-logo {
