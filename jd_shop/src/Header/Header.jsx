@@ -7,11 +7,11 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { CartContext } from "../Cart/Cart";
 
-
 export default function Header() {
   const { count } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState();
+  const [searchId, setSearchId] = useState();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -27,19 +27,14 @@ export default function Header() {
   }, []);
 
   const handleChange = (e) => {
-    if (
-      products.filter((element) => {
-        // console.log(element.title);
-        // console.log(element.title.includes(e.target.value));
-        if (element.title.includes(e.target.value)) {
-          console.log(element.title);
-          setSearch(element.title);
-        }
-        return element.title.includes(e.target.value);
-      })
-    )
-      console.log(e.target.value);
-    console.log(handleChange());
+    products.map((element) => {
+      if (element.title.includes(e.target.value)) {
+        setSearch(element.title);
+        setSearchId(element.id);
+      }
+      return element.title.includes(e.target.value);
+    });
+    console.log(e.target.value);
   };
 
   return (
@@ -59,14 +54,19 @@ export default function Header() {
             {/* <a href="#">Link 1</a>
             <a href="#">Link 2</a>
             <a href="#">Link 3</a> */}
-            {search ? <a>{search}</a> : "No results"}
+            {/* <Link to={`blog/${id}`}>{title}</Link> */}
+            {search ? (
+              <Link to={`/single/${searchId}`}>{search}</Link>
+            ) : (
+              "No results"
+            )}
           </div>
         </div>
         <nav class="nav">
           {/* <Link to="cart"> */}
-          <span style={{color:'white'}}>
+          <span style={{ color: "white" }}>
             <BsCartFill className="icons" />
-            {count}
+            <div className="badge">{count}</div>
           </span>
           <Link to="user">
             <FaUserCircle className="icons" />

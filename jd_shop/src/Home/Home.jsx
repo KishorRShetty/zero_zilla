@@ -23,7 +23,8 @@ const Home = () => {
 
     async function fetchItems() {
       const requestItems = await axios.get(
-        `https://fakestoreapi.com/products/category/${category}`
+        // `https://fakestoreapi.com/products/category/${category}`
+        `https://fakestoreapi.com/products`
       );
       // console.log(requestItems.data);
       setItems(requestItems.data);
@@ -31,8 +32,12 @@ const Home = () => {
     fetchCategories();
     fetchItems();
   }, [category]);
-  function clickHandler(e) {
-    setCategory(e.target.outerText);
+  async function clickHandler(e) {
+    const categoryBased = await axios.get(
+      `https://fakestoreapi.com/products/category/${e.target.outerText}`
+    );
+    setItems(categoryBased.data);
+    // setCategory(e.target.outerText);
     // console.log(e.target.outerText);
   }
 
@@ -45,7 +50,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <><br/>
       <div className="categories">
         {categories.map((cat) => (
           // <p>{cat}</p>
