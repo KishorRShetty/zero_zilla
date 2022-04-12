@@ -1,0 +1,12 @@
+.categories{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.categories > p{
+    border: 1px solid gray;
+    border-radius: 5%;
+    cursor: pointer;
+    padding: 5px;
+}
