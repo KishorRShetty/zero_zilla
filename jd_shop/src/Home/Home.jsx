@@ -26,12 +26,12 @@ const Home = () => {
     fetchCategories();
     fetchItems();
   }, [category]);
-function clickHandler(e){
-setCategory(e.target.outerText);
-// console.log(e.target.outerText);
-}
+  function clickHandler(e) {
+    setCategory(e.target.outerText);
+    // console.log(e.target.outerText);
+  }
   return (
-    <div>
+    <>
       <div className="categories">
         {categories.map((cat) => (
           // <p>{cat}</p>
@@ -42,16 +42,18 @@ setCategory(e.target.outerText);
         {items.map((itm, index) => (
           <>
             <div className="card">
-              <img src={itm.image} alt="Avatar" style={{width:"100%"}} />
+              <img src={itm.image} alt="Avatar" style={{ width: "100%" }} />
               <div className="container">
                 <p>{itm.title}</p>
-                <b><p className="price">${itm.price}</p></b>
               </div>
+              <b>
+                <p className="price">${itm.price}</p>
+              </b>
             </div>
           </>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
