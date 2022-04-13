@@ -13,7 +13,10 @@ app.get("*",(req,res)=>{
 })
 // for Heroku
 
-
-app.listen(4000, () => {
-    console.log(`Server is running on 4000`);
-  });
+try {
+    app.listen(4000, () => {
+        console.log(`Server is running on 4000`);
+      });
+} catch (error) {
+    console.log(error);
+}
