@@ -9,23 +9,6 @@ function ProductById() {
   const { count, setCount } = useContext(CartContext);
   const [product, setProduct] = useState([]);
 
-  // useEffect(() => {
-  // fetch('https://fakestoreapi.com/products/1')
-  //         .then(res=>res.json())
-  //         .then(json=>setProduct(json))
-  //         .then(json=>console.log(json))
-
-  // async function fetchProduct() {
-  //   console.log(`inside useEffectId${id}`);
-  //   console.log(`https://fakestoreapi.com/products/${id}`);
-  //   const requestProduct = await axios.get(`https://fakestoreapi.com/products/${id}`);
-  //   setProduct(requestProduct.data);
-  //   console.log(requestProduct);
-  //   return requestProduct;
-  // }
-  // fetchProduct();
-  // }, []);
-
   useEffect(() => {
     async function getProduct() {
       const prodData = await axios.get(
