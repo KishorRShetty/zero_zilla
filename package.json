@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm install --prefix jd_shop && npm run build --prefix jd-shop"
+    "heroku-postbuild": "npm install --prefix jd_shop && npm run build --prefix jd_shop"
   },
   "repository": {
     "type": "git",
