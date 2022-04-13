@@ -55,10 +55,9 @@ export default function Header() {
           />
           {search.length !== 0 && (
             <div className="dropdown-content">
-              {/* <Link to={`single/${searchId}`}>{search}</Link> */}
-
               {search.map((value) => {
-                return <p>{value.title}</p>;
+                return <p><Link to={`single/${value.id}`}>{value.title}</Link></p>;
+                // return <p>{value.title}</p>;
               })}
             </div>
           )}

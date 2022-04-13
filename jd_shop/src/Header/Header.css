@@ -50,11 +50,12 @@
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   height: 250px;
-  overflow:hidden;
+  overflow: hidden;
   overflow-y: auto;
 }
 
-.dropdown-content p {
+.dropdown-content p > * {
+  font-size: smaller;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -82,5 +83,5 @@
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
-  line-height: 3vh;
+  line-height: 20px;
 }
