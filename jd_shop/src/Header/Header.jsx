@@ -56,13 +56,17 @@ export default function Header() {
           {search.length !== 0 && (
             <div className="dropdown-content">
               {search.map((value) => {
-                return <p><Link to={`single/${value.id}`}>{value.title}</Link></p>;
+                return (
+                  <p onClick={()=>setSearch([])}>
+                    <Link to={`single/${value.id}`}>{value.title}</Link>
+                  </p>
+                );
                 // return <p>{value.title}</p>;
               })}
             </div>
           )}
         </div>
-        <nav class="nav">
+        <nav className="nav">
           {/* <Link to="cart"> */}
           <span style={{ color: "white" }}>
             <BsCartFill className="icons" />

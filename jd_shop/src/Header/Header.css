@@ -15,8 +15,9 @@
 
 .search-input {
   height: 5vh;
-  flex: 0.5;
+  flex: 5;
   outline: 0;
+  border-radius:150px;
 }
 
 .icons {
@@ -71,9 +72,11 @@
   display: block;
 } */
 
-.search-input:focus .dropdown-content {
+/* .dropbtn:focus .dropdown-content {
   display: block;
-}
+} */
+
+/* input:focus + .dropdown-content { display: block; } */
 
 .badge {
   text-align: center;
@@ -84,4 +87,11 @@
   border-radius: 50%;
   display: inline-block;
   line-height: 20px;
+}
+
+
+@media only screen and (max-width: 420px) {
+  .search-input{
+    max-width: 100px;
+  }
 }

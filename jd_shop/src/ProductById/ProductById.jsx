@@ -19,7 +19,7 @@ function ProductById() {
       return prodData;
     }
     getProduct();
-  }, []);
+  }, [id]);
 
   return (<><br/>
   <div className="top wrap">
