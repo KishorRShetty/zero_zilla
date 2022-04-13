@@ -11,7 +11,7 @@ const ProductDetails = () => {
   return (
     <><br/>
       <div className="top wrap">
-        {console.log(prodDetail)}
+        {/* {console.log(prodDetail)} */}
         {/* {location.state.itemDetail.title} */}
         <div className="detailsCard">
           <img src={prodDetail.image} alt="Prod" style={{ width: "100%" }} />
