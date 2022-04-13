@@ -27,12 +27,13 @@ export default function Header() {
   }, []);
 
   const handleChange = (e) => {
+    if(e.target.value ===""){setSearch([])}
     products.map((element) => {
       if (element.title.includes(e.target.value)) {
         setSearch(element.title);
         setSearchId(element.id);
       }
-      return element.title.includes(e.target.value);
+      return element.title.toLowerCase().includes(e.target.value.toLowerCase());
     });
     console.log(e.target.value);
   };
@@ -55,11 +56,11 @@ export default function Header() {
             <a href="#">Link 2</a>
             <a href="#">Link 3</a> */}
             {/* <Link to={`blog/${id}`}>{title}</Link> */}
-            {search ? (
-              <Link to={`/single/${searchId}`}>{search}</Link>
-            ) : (
-              "No results"
-            )}
+            {/* {search ? ( */}
+              <Link to={`single/${searchId}`}>{search}</Link>
+            {/* ) : ( */}
+              {/* "No results" */}
+            {/* )} */}
           </div>
         </div>
         <nav class="nav">

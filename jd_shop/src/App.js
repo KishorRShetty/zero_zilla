@@ -20,8 +20,8 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/user" element={<User />}></Route>
-            <Route path="/single/:id" element={<ProductById />}></Route>
             <Route path="/details" element={<ProductDetails />}></Route>
+            <Route path="single/:id" element={<ProductById />}></Route>
           </Routes>
         </Router>
       </CartContext.Provider>
