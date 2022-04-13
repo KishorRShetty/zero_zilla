@@ -12,10 +12,10 @@
     "react-scripts": "5.0.0"
   },
   "scripts": {
-    "start": "npm start",
-    "build": "npm build",
-    "eject": "npm eject",
-    "heroku-postbuild":"npm install --prefix color_quote && npm run build --prefix color_quote"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
