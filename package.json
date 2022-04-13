@@ -1,0 +1,24 @@
+{
+  "name": "zero_zilla",
+  "version": "1.0.0",
+  "description": "shopping_app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild":"npm install --prefix jd_shop && npm run build --prefix jd-shop"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KishorRShetty/zero_zilla.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KishorRShetty/zero_zilla/issues"
+  },
+  "homepage": "https://github.com/KishorRShetty/zero_zilla#readme",
+  "engines": {
+    "node": "16.x"
+  }
+}
