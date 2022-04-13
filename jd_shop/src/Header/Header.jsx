@@ -10,7 +10,7 @@ import { CartContext } from "../Cart/Cart";
 export default function Header() {
   const { count } = useContext(CartContext);
   const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState([]);
   const [searchId, setSearchId] = useState();
 
   useEffect(() => {
@@ -27,15 +27,17 @@ export default function Header() {
   }, []);
 
   const handleChange = (e) => {
-    if(e.target.value ===""){setSearch([])}
-    products.map((element) => {
-      if (element.title.includes(e.target.value)) {
-        setSearch(element.title);
-        setSearchId(element.id);
-      }
-      return element.title.toLowerCase().includes(e.target.value.toLowerCase());
+    const searchWord = e.target.value;
+    const newSearch = products.filter((value) => {
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
     });
-    console.log(e.target.value);
+
+    if (searchWord === "") {
+      setSearch([]);
+    } else {
+      setSearch(newSearch);
+    }
+    // console.log(e.target.value);
   };
 
   return (
@@ -51,17 +53,15 @@ export default function Header() {
             class="search-input dropbtn"
             placeholder="Search"
           />
-          <div className="dropdown-content">
-            {/* <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a> */}
-            {/* <Link to={`blog/${id}`}>{title}</Link> */}
-            {/* {search ? ( */}
-              <Link to={`single/${searchId}`}>{search}</Link>
-            {/* ) : ( */}
-              {/* "No results" */}
-            {/* )} */}
-          </div>
+          {search.length !== 0 && (
+            <div className="dropdown-content">
+              {/* <Link to={`single/${searchId}`}>{search}</Link> */}
+
+              {search.map((value) => {
+                return <p>{value.title}</p>;
+              })}
+            </div>
+          )}
         </div>
         <nav class="nav">
           {/* <Link to="cart"> */}

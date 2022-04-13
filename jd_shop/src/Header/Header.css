@@ -16,6 +16,7 @@
 .search-input {
   height: 5vh;
   flex: 0.5;
+  outline: 0;
 }
 
 .icons {
@@ -42,32 +43,37 @@
 }
 
 .dropdown-content {
-  display: none;
+  /* display: none; */
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  height: 250px;
+  overflow:hidden;
+  overflow-y: auto;
 }
 
-.dropdown-content a {
+.dropdown-content p {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-content a:hover {
+.dropdown-content p:hover {
   background-color: #f1f1f1;
+  cursor: pointer;
 }
 
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
+  display: block;
+} */
+
+.search-input:focus .dropdown-content {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
-  /* background-color: #3e8e41; */
-}
 .badge {
   text-align: center;
   font-size: small;
