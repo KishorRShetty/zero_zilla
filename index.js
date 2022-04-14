@@ -13,8 +13,8 @@ app.get("*", (req, res) => {
 });
 // for Heroku
 
-const server = app.listen(46000, () => {
-  console.log(`Server is running on 46000`);
+const server = app.listen(process.env.PORT, () => {
+  console.log(`Server is running on ${process.env.PORT}`);
 });
 
 process.on("error", (err) => {
