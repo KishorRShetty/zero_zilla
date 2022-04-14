@@ -17,7 +17,7 @@ const server = app.listen(46000, () => {
   console.log(`Server is running on 46000`);
 });
 
-process.on("unhandledRejection", (err) => {
+process.on("error", (err) => {
   console.log(`Error: ${err.message}`);
   console.log("Shutting down the server");
   server.close(() => {
