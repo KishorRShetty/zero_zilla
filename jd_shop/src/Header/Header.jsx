@@ -70,7 +70,7 @@ export default function Header() {
           {/* <Link to="cart"> */}
           <span style={{ color: "white" }}>
             <BsCartFill className="icons" />
-            <div className="badge">{count}</div>
+            <span className="badge">{count}</span>
           </span>
           <Link to="user">
             <FaUserCircle className="icons" />

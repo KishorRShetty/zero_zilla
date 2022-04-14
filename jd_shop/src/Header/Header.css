@@ -83,10 +83,11 @@
   font-size: small;
   height: 20px;
   width: 20px;
-  background-color: #bbb;
+  background-color: white;
   border-radius: 50%;
   display: inline-block;
-  line-height: 20px;
+  color:black;
+  vertical-align: top;
 }
 
 
