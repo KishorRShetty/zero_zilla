@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logo from "../logo.svg";
 import { BsCartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
@@ -56,9 +56,9 @@ export default function Header() {
   return (
     <>
       <header class="site-header">
-        <Link to="/">
-          <img src={logo} className="App-logo" alt="logo" />
-        </Link>
+        {/* <Link to="/"> */}
+          <img onClick={<Navigate to="/" />} src={logo} className="App-logo" alt="logo" />
+        {/* </Link> */}
         <div className="dropdown">
           <input
             type="text"
