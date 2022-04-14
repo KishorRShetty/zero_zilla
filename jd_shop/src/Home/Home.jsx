@@ -34,7 +34,7 @@ const Home = () => {
     fetchItems();
   }, [category]);
   async function clickHandler(e) {
-    setItems([]);
+    setItems([]); //can do it for prod by Id too by contextApi. If needed.
     const categoryBased = await axios.get(
       `https://fakestoreapi.com/products/category/${e.target.outerText}`
     );
@@ -48,6 +48,7 @@ const Home = () => {
   };
 
   const handleAtC = () => {
+    //cart logic can be implmented here. If needed
     setCount(count + 1);
   };
 
