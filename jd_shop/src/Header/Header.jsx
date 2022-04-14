@@ -40,6 +40,19 @@ export default function Header() {
     // console.log(e.target.value);
   };
 
+  const debounce = (func, delay) =>{
+    let timer;
+
+    return function(){
+      let context=this;
+      let args=arguments;
+      clearTimeout(timer);
+      timer = setTimeout(()=>{
+        handleChange.apply(context, args);
+      },delay)
+    }
+  }
+
   return (
     <>
       <header class="site-header">
@@ -49,7 +62,7 @@ export default function Header() {
         <div className="dropdown">
           <input
             type="text"
-            onKeyUp={handleChange}
+            onKeyUp={debounce(handleChange,300)}
             class="search-input dropbtn"
             placeholder="Search"
           />
