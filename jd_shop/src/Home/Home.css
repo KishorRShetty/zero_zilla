@@ -2,7 +2,6 @@
   margin-top: 60px;
   display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap;
 }
 
 .categories > p {
@@ -11,6 +10,7 @@
   background-color: #282c34;
   color: white;
   font-size: medium;
+  word-wrap: normal;
 }
 
 .categories > p:hover {
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  gap:1rem;
+  gap: 1rem;
 }
 
 .card {
@@ -40,7 +40,7 @@
   overflow: hidden;
 }
 
-.card img:hover{
+.card img:hover {
   cursor: pointer;
 }
 
@@ -56,6 +56,14 @@
 .container p {
   font-size: smaller;
 }
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .price {
   text-align: center;
 }

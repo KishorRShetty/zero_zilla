@@ -73,7 +73,7 @@ const Home = () => {
                 <b>
                   <p className="price">${itm.price}</p>
                 </b>
-                <p>{itm.title}</p>
+                <p className="title">{itm.title}</p>
               </div>
               <button onClick={handleAtC}>Add to Cart</button>
             </div>
