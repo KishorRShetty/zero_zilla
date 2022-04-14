@@ -56,9 +56,9 @@ export default function Header() {
   return (
     <>
       <header class="site-header">
-        {/* <Link to="/"> */}
+        <Link to="/">
           <img onClick={<Navigate to="/" />} src={logo} className="App-logo" alt="logo" />
-        {/* </Link> */}
+        </Link>
         <div className="dropdown">
           <input
             type="text"
