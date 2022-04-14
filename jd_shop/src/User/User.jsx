@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./User.css";
 import logo from "../logo.svg";
+import Loader from "../Loader/Loader";
 
 function User() {
-  const [udata, setUdata] = useState({});
+  const [udata, setUdata] = useState([]);
   useEffect(() => {
     async function fetchUser() {
       const requestUser = await axios.get("https://fakestoreapi.com/users/1");
@@ -18,15 +19,21 @@ function User() {
   return (
     <>
       <br />
-      <div className="top">
-        <div class="card">
-          <img src={logo} alt="John" style={{ width: "100%" }} />
-          <h1>{udata.username}</h1>
-          <p class="title">{udata.phone}</p>
-          <p>{udata.email}</p>
-          <button>Contact</button>
+      {udata.length !== 0 ? (
+        <div className="top">
+          <div class="card">
+            <img src={logo} alt="John" style={{ width: "100%" }} />
+            <h1>{udata.username}</h1>
+            <p class="title">{udata.phone}</p>
+            <p>{udata.email}</p>
+            <button>Contact</button>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="top">
+          <Loader size={"large"} />
+        </div>
+      )}
     </>
   );
 }
