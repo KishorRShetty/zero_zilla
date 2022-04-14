@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./User.css";
 import logo from "../logo.svg";
 import Loader from "../Loader/Loader";
+import "./User.css";
 
 function User() {
   const [udata, setUdata] = useState([]);
@@ -21,10 +21,10 @@ function User() {
       <br />
       {udata.length !== 0 ? (
         <div className="top">
-          <div class="card">
+          <div class="usercard">
             <img src={logo} alt="John" style={{ width: "100%" }} />
             <h1>{udata.username}</h1>
-            <p class="title">{udata.phone}</p>
+            <p class="usertitle">{udata.phone}</p>
             <p>{udata.email}</p>
             <button>Contact</button>
           </div>
