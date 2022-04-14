@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../Cart/Cart";
+import Loader from "../Loader/Loader";
 
 const Home = () => {
   const { count, setCount } = useContext(CartContext);
@@ -50,36 +51,50 @@ const Home = () => {
   };
 
   return (
-    <><br/>
-      <div className="categories">
-        {categories.map((cat) => (
-          // <p>{cat}</p>
-          <p onClick={clickHandler}>{cat}</p>
-        ))}
-      </div>
-      <div className="items">
-        {items.map((itm) => (
-          <>
-            <div className="card">
-              <img
-                onClick={() => {
-                  toProductDetails(itm);
-                }}
-                src={itm.image}
-                alt="Avatar"
-                style={{ width: "100%" }}
-              />
-              <div className="container">
-                <b>
-                  <p className="price">${itm.price}</p>
-                </b>
-                <p className="title">{itm.title}</p>
+    <>
+      <br />
+      {categories.length !== 0 ? (
+        <div className="categories">
+          {categories.map((cat) => (
+            // <p>{cat}</p>
+            <p onClick={clickHandler}>{cat}</p>
+          ))}
+        </div>
+      ) : (
+        <div className="categories top">
+          <Loader size={"small"} />
+        </div>
+      )}
+
+      {items.length !== 0 ? (
+        <div className="items">
+          {items.map((itm) => (
+            <>
+              <div className="card">
+                <img
+                  onClick={() => {
+                    toProductDetails(itm);
+                  }}
+                  src={itm.image}
+                  alt="Avatar"
+                  style={{ width: "100%" }}
+                />
+                <div className="container">
+                  <b>
+                    <p className="price">${itm.price}</p>
+                  </b>
+                  <p className="title">{itm.title}</p>
+                </div>
+                <button onClick={handleAtC}>Add to Cart</button>
               </div>
-              <button onClick={handleAtC}>Add to Cart</button>
-            </div>
-          </>
-        ))}
-      </div>
+            </>
+          ))}
+        </div>
+      ) : (
+        <div className="items">
+          <Loader size={"large"} />
+        </div>
+      )}
     </>
   );
 };
