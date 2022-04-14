@@ -11,6 +11,7 @@
 
 .App-logo {
   height: 10vh;
+  width: 25vw;
   cursor: pointer;
 }
 
@@ -18,7 +19,7 @@
   height: 5vh;
   flex: 5;
   outline: 0;
-  border-radius:150px;
+  border-radius: 150px;
 }
 
 .icons {
@@ -87,13 +88,15 @@
   background-color: white;
   border-radius: 50%;
   display: inline-block;
-  color:black;
+  color: black;
   vertical-align: top;
+  margin-left: -20px;
+  border: 1px solid #282c34;
 }
 
-
 @media only screen and (max-width: 420px) {
-  .search-input{
-    max-width: 100px;
+  .search-input {
+    width: 100px;
+    height: 30px;
   }
 }

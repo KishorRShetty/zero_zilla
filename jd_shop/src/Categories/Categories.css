@@ -1,0 +1,27 @@
+.cat {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  overflow-x: scroll;
+  white-space: nowrap;
+  /* flex-wrap: wrap; */
+  /* background-color: #282c34; */
+  height: 70px;
+  align-items: center;
+}
+
+.link > *:hover {
+  opacity: 0.7;
+}
+.link > * {
+  cursor: pointer;
+  padding: 6px 10px;
+  text-transform: capitalize;
+  color: #282c34;
+  font-size: small;
+  /* word-wrap: normal; */
+}
+
+.link:first-child{
+  margin-left: 20px;
+}

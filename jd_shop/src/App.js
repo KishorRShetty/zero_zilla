@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import { useState } from "react";
 import ProductById from "./ProductById/ProductById";
+import Categories from "./Categories/Categories";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,8 +17,11 @@ function App() {
       <CartContext.Provider value={{ count, setCount }}>
         <Router>
           <Header />
+          <Categories/>
           <Routes>
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/" element={<Home />}>
+              <Route path=":category" element={<Home/>}></Route>
+            </Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/user" element={<User />}></Route>
             <Route path="/details" element={<ProductDetails />}></Route>

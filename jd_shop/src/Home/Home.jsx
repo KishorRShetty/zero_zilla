@@ -1,47 +1,29 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../Cart/Cart";
 import Loader from "../Loader/Loader";
 
 const Home = () => {
   const { count, setCount } = useContext(CartContext);
   const navigate = useNavigate();
-
-  const [category, setCategory] = useState("jewelery");
-  const [categories, setCategories] = useState([]);
+  const { category } = useParams();
   const [items, setItems] = useState([]);
   useEffect(() => {
-    async function fetchCategories() {
-      const requestCategory = await axios.get(
-        "https://fakestoreapi.com/products/categories"
-      );
-      // console.log(requestCategory.data);
-      setCategories(requestCategory.data);
-      return requestCategory;
-    }
-
+    // console.log(category);
+    const linkToUse = category
+      ? `https://fakestoreapi.com/products/category/${category}`
+      : `https://fakestoreapi.com/products`;
+      setItems([]);
     async function fetchItems() {
-      const requestItems = await axios.get(
-        // `https://fakestoreapi.com/products/category/${category}`
-        `https://fakestoreapi.com/products`
-      );
+      const requestItems = await axios.get(linkToUse);
       // console.log(requestItems.data);
       setItems(requestItems.data);
     }
-    fetchCategories();
+    // fetchCategories();
     fetchItems();
   }, [category]);
-  async function clickHandler(e) {
-    setItems([]); //can do it for prod by Id too by contextApi. If needed.
-    const categoryBased = await axios.get(
-      `https://fakestoreapi.com/products/category/${e.target.outerText}`
-    );
-    setItems(categoryBased.data);
-    // setCategory(e.target.outerText);
-    // console.log(e.target.outerText);
-  }
 
   const toProductDetails = (itemDetail) => {
     navigate("/details", { state: { itemDetail } });
@@ -54,24 +36,9 @@ const Home = () => {
 
   return (
     <>
-      <br />
-      {categories.length !== 0 ? (
-        <div className="categories">
-          {categories.map((cat) => (
-            // <p>{cat}</p>
-            <p onClick={clickHandler}>{cat}</p>
-          ))}
-        </div>
-      ) : (
-        <div className="categories top">
-          <Loader size={"small"} />
-        </div>
-      )}
-
       {items.length !== 0 ? (
         <div className="items">
           {items.map((itm) => (
-            <>
               <div className="card">
                 <img
                   onClick={() => {
@@ -89,7 +56,6 @@ const Home = () => {
                 </div>
                 <button onClick={handleAtC}>Add to Cart</button>
               </div>
-            </>
           ))}
         </div>
       ) : (
