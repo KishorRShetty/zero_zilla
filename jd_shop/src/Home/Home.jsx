@@ -34,6 +34,7 @@ const Home = () => {
     fetchItems();
   }, [category]);
   async function clickHandler(e) {
+    setItems([]);
     const categoryBased = await axios.get(
       `https://fakestoreapi.com/products/category/${e.target.outerText}`
     );
