@@ -40,29 +40,29 @@ export default function Header() {
     // console.log(e.target.value);
   };
 
-  const debounce = (func, delay) =>{
+  const debounce = (func, delay) => {
     let timer;
 
-    return function(){
-      let context=this;
-      let args=arguments;
+    return function () {
+      let context = this;
+      let args = arguments;
       clearTimeout(timer);
-      timer = setTimeout(()=>{
+      timer = setTimeout(() => {
         handleChange.apply(context, args);
-      },delay)
-    }
-  }
+      }, delay);
+    };
+  };
 
   return (
     <>
       <header class="site-header">
         <Link to="/">
-          <img onClick={<Navigate to="/" />} src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
         </Link>
         <div className="dropdown">
           <input
             type="text"
-            onKeyUp={debounce(handleChange,300)}
+            onKeyUp={debounce(handleChange, 300)}
             class="search-input dropbtn"
             placeholder="Search"
           />
@@ -70,7 +70,7 @@ export default function Header() {
             <div className="dropdown-content">
               {search.map((value) => {
                 return (
-                  <p onClick={()=>setSearch([])}>
+                  <p onClick={() => setSearch([])}>
                     <Link to={`single/${value.id}`}>{value.title}</Link>
                   </p>
                 );
