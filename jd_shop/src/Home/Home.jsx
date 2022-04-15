@@ -37,9 +37,9 @@ const Home = () => {
 
   if (infinite === false && limit !== total) {
     window.onscroll = function () {
-      const inner = window.innerHeight;
-      const scroll = document.documentElement.scrollTop;
-      const offset = document.documentElement.offsetHeight;
+      // const inner = window.innerHeight;
+      // const scroll = document.documentElement.scrollTop;
+      // const offset = document.documentElement.offsetHeight;
 
       if (
         window.innerHeight + document.documentElement.scrollTop ===
