@@ -35,29 +35,46 @@ const Home = () => {
     fetchItems();
   }, [category, limit]);
 
-  if (infinite === false && limit !== total) {
-    window.onscroll = function () {
-      // const inner = window.innerHeight;
-      // const scroll = document.documentElement.scrollTop;
-      // const offset = document.documentElement.offsetHeight;
+  const debounce = (func, delay) => {
+    let timer;
 
-      if (
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.offsetHeight
-      ) {
-        // console.log(`${inner + scroll} = ${offset}`);
-        // console.log(`Before Limit: ${limit} Total: ${total}`);
-        if (limit < total) {
-          setLimit(limit + 6);
-          setInfinite(true);
-          // console.log(`AFter1 Limit: ${limit} Total: ${total}`);
-        } else {
-          setLimit(total);
-          // setInfinite(false);
-          // console.log(`AFter2 Limit: ${limit} Total: ${total}`);
-        }
-      }
+    return function () {
+      let context = this;
+      let args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(context, args);
+      }, delay);
     };
+  };
+
+  const infiniteScroll = function () {
+    // const inner = window.innerHeight;
+    // const scroll = document.documentElement.scrollTop;
+    // const offset = document.documentElement.offsetHeight;
+
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      // console.log(`${inner + scroll} = ${offset}`);
+
+      //uncoment the below to see the debounce effect in the console
+      // console.log(`Before Limit: ${limit} Total: ${total}`);
+      if (limit < total) {
+        setLimit(limit + 6);
+        setInfinite(true);
+        // console.log(`AFter1 Limit: ${limit} Total: ${total}`);
+      } else {
+        setLimit(total);
+        setInfinite(true);
+        // console.log(`AFter2 Limit: ${limit} Total: ${total}`);
+      }
+    }
+  };
+
+  if (infinite === false && limit !== total) {
+    window.onscroll = debounce(infiniteScroll, 1000);
   }
 
   const toProductDetails = (itemDetail) => {
