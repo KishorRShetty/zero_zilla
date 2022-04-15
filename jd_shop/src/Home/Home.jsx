@@ -20,9 +20,9 @@ const Home = () => {
       : `https://fakestoreapi.com/products?limit=${limit}`;
     // `https://fakestoreapi.com/products`;
     // https://fakestoreapi.com/products?limit=5
-    if (linkToUse.includes(category)) {
-      setItems([]);
-    }
+    // if (linkToUse.includes(category)) {
+    setItems([]);
+    // }
     async function fetchItems() {
       const requestItems = await axios.get(linkToUse);
       // console.log(requestItems.data);
@@ -115,7 +115,7 @@ const Home = () => {
           <Loader size={"large"} />
         </div>
       )}
-      {infinite === true &&(
+      {infinite === true && (
         <div className="infinite">
           <Loader size={"small"} />
         </div>
