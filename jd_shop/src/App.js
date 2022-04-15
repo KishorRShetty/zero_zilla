@@ -6,21 +6,22 @@ import Cart, { CartContext } from "./Cart/Cart";
 import User from "./User/User";
 import Home from "./Home/Home";
 import ProductDetails from "./ProductDetails/ProductDetails";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ProductById from "./ProductById/ProductById";
 import Categories from "./Categories/Categories";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
+  const { count, setCount } = useContext(CartContext);
   return (
     <>
       <CartContext.Provider value={{ count, setCount }}>
         <Router>
           <Header />
-          <Categories/>
+          <Categories />
           <Routes>
             <Route path="/" element={<Home />}>
-              <Route path=":category" element={<Home/>}></Route>
+              <Route path=":category" element={<Home />}></Route>
             </Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/user" element={<User />}></Route>

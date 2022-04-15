@@ -3,10 +3,8 @@ import Header from "../Header/Header";
 export const CartContext = createContext();
 
 const Cart = () => {
-
-  return (
-      {/* <div className="top">Cart</div> */}
-  );
+  const [count, setCount] = useState(0);
+  return <div>Cart</div>;
 };
 
 export default Cart;
