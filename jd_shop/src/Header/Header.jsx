@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../logo.svg";
 import { BsCartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
@@ -11,7 +11,6 @@ export default function Header() {
   const { count } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState([]);
-  const [searchId, setSearchId] = useState();
 
   useEffect(() => {
     async function fetchProducts() {

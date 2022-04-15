@@ -35,20 +35,30 @@ const Home = () => {
     fetchItems();
   }, [category, limit]);
 
-  window.onscroll = function () {
-    if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
-    ) {
-      if (!limit > total) {
-        setLimit(limit + 6);
-        setInfinite(true);
-      }else{
-        setLimit(total);
-        setInfinite(false);
+  if (infinite === false && limit !== total) {
+    window.onscroll = function () {
+      const inner = window.innerHeight;
+      const scroll = document.documentElement.scrollTop;
+      const offset = document.documentElement.offsetHeight;
+
+      if (
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight
+      ) {
+        console.log(`${inner + scroll} = ${offset}`);
+        // console.log(`Before Limit: ${limit} Total: ${total}`);
+        if (limit < total) {
+          setLimit(limit + 6);
+          setInfinite(true);
+          // console.log(`AFter1 Limit: ${limit} Total: ${total}`);
+        } else {
+          setLimit(total);
+          // setInfinite(false);
+          // console.log(`AFter2 Limit: ${limit} Total: ${total}`);
+        }
       }
-    }
-  };
+    };
+  }
 
   const toProductDetails = (itemDetail) => {
     navigate("/details", { state: { itemDetail } });
