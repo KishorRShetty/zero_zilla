@@ -5,24 +5,32 @@ import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../Cart/Cart";
 import Loader from "../Loader/Loader";
 
-const Home = () => {
+const Home = (props) => {
+  const resultsPerPage = 6;
   const { count, setCount } = useContext(CartContext);
   const navigate = useNavigate();
   const { category } = useParams();
   const [items, setItems] = useState([]);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(resultsPerPage);
   const [total, setTotal] = useState(0);
   const [infinite, setInfinite] = useState(false);
+
+  // const { pathname } = useLocation();
+
   useEffect(() => {
-    // console.log(category);
+    // console.log(pathname);
+
     const linkToUse = category
       ? `https://fakestoreapi.com/products/category/${category}`
       : `https://fakestoreapi.com/products?limit=${limit}`;
     // `https://fakestoreapi.com/products`;
     // https://fakestoreapi.com/products?limit=5
-    // if (linkToUse.includes(category)) {
-    setItems([]);
-    // }
+    if (limit === resultsPerPage) {
+      setItems([]);
+    }
+    if (linkToUse.includes(category)) {
+      setItems([]);
+    }
     async function fetchItems() {
       const requestItems = await axios.get(linkToUse);
       // console.log(requestItems.data);
@@ -62,7 +70,7 @@ const Home = () => {
       //uncoment the below to see the debounce effect in the console
       // console.log(`Before Limit: ${limit} Total: ${total}`);
       if (limit <= total) {
-        setLimit(limit + 6);
+        setLimit(limit + resultsPerPage);
         setInfinite(true);
         // console.log(`AFter1 Limit: ${limit} Total: ${total}`);
       } else {
