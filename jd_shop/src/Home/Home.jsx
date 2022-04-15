@@ -45,7 +45,7 @@ const Home = () => {
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight
       ) {
-        console.log(`${inner + scroll} = ${offset}`);
+        // console.log(`${inner + scroll} = ${offset}`);
         // console.log(`Before Limit: ${limit} Total: ${total}`);
         if (limit < total) {
           setLimit(limit + 6);
