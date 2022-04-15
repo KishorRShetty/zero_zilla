@@ -61,13 +61,13 @@ const Home = () => {
 
       //uncoment the below to see the debounce effect in the console
       // console.log(`Before Limit: ${limit} Total: ${total}`);
-      if (limit < total) {
+      if (limit <= total) {
         setLimit(limit + 6);
         setInfinite(true);
         // console.log(`AFter1 Limit: ${limit} Total: ${total}`);
       } else {
         setLimit(total);
-        setInfinite(true);
+        setInfinite(false);
         // console.log(`AFter2 Limit: ${limit} Total: ${total}`);
       }
     }
@@ -115,7 +115,7 @@ const Home = () => {
           <Loader size={"large"} />
         </div>
       )}
-      {infinite === true && (
+      {infinite === true &&(
         <div className="infinite">
           <Loader size={"small"} />
         </div>
