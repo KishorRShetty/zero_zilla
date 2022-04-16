@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CartContext } from "../Cart/Cart";
 import axios from "axios";
 import "./ProductById.css";
 import Loader from "../Loader/Loader";
 
 function ProductById() {
   const { id } = useParams();
-  const { count, setCount } = useContext(CartContext);
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
@@ -33,7 +31,11 @@ function ProductById() {
             <h1>{product.title}</h1>
             <p className="detailsPrice">${product.price}</p>
             <p>{product.description}</p>
-            <button onClick={() => setCount(count + 1)}>Add to Cart</button>
+            <button
+            //  onClick={() => setCount(count + 1)}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       ) : (

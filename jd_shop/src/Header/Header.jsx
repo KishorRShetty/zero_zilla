@@ -3,12 +3,10 @@ import logo from "../logo.svg";
 import { BsCartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import "./Header.css";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { CartContext } from "../Cart/Cart";
 
 export default function Header() {
-  const { count } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState([]);
 
@@ -82,7 +80,7 @@ export default function Header() {
           {/* <Link to="cart"> */}
           <span style={{ color: "white" }}>
             <BsCartFill className="icons" />
-            <span className="badge">{count}</span>
+            <span className="badge">{}</span>
           </span>
           <Link to="user">
             <FaUserCircle className="icons" />

@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { CartContext } from "../Cart/Cart";
 import Loader from "../Loader/Loader";
 
 const Home = (props) => {
   const resultsPerPage = 6;
-  const { count, setCount } = useContext(CartContext);
   const navigate = useNavigate();
   const { category } = useParams();
   const [items, setItems] = useState([]);
@@ -91,7 +89,7 @@ const Home = (props) => {
 
   const handleAtC = () => {
     //cart logic can be implmented here. If needed
-    setCount(count + 1);
+    // setCount(count + 1);
   };
 
   return (

@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
-import { CartContext } from "../Cart/Cart";
 import "./ProductDetails.css"
 
 
 const ProductDetails = () => {
-  const { count, setCount } = useContext(CartContext);
   const location = useLocation();
   const prodDetail = location.state.itemDetail;
   return (
@@ -19,7 +16,9 @@ const ProductDetails = () => {
           <p className="detailsPrice">${prodDetail.price}</p>
           <p>{prodDetail.description}
           </p>
-          <button onClick={()=>setCount(count+1)}>Add to Cart</button>
+          <button 
+          // onClick={()=>setCount(count+1)}
+          >Add to Cart</button>
           
         </div>
       </div>
