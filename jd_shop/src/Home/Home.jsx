@@ -3,8 +3,9 @@ import axios from "axios";
 import "./Home.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import { CartState } from "../Cart/Cart";
 
-const Home = (props) => {
+const Home = () => {
   const resultsPerPage = 6;
   const navigate = useNavigate();
   const { category } = useParams();
@@ -12,6 +13,9 @@ const Home = (props) => {
   const [limit, setLimit] = useState(resultsPerPage);
   const [total, setTotal] = useState(0);
   const [infinite, setInfinite] = useState(false);
+
+  const {cart,setCart} = CartState();
+  // console.log(CartState());
 
   // const { pathname } = useLocation();
 
@@ -87,17 +91,12 @@ const Home = (props) => {
     navigate("/details", { state: { itemDetail } });
   };
 
-  const handleAtC = () => {
-    //cart logic can be implmented here. If needed
-    // setCount(count + 1);
-  };
-
   return (
     <>
       {items.length !== 0 ? (
         <div className="items">
           {items.map((itm) => (
-            <div className="card">
+            <div className="card" key={itm.id}>
               <img
                 onClick={() => {
                   toProductDetails(itm);
@@ -112,7 +111,7 @@ const Home = (props) => {
                 </b>
                 <p className="title">{itm.title}</p>
               </div>
-              <button onClick={handleAtC}>Add to Cart</button>
+              <button onClick={()=>{setCart([...cart,itm]); console.log(cart)}}>Add to Cart</button>
             </div>
           ))}
         </div>

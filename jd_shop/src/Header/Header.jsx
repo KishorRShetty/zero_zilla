@@ -5,10 +5,13 @@ import { FaUserCircle } from "react-icons/fa";
 import "./Header.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { CartState } from "../Cart/Cart";
+
 
 export default function Header() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState([]);
+  const {cart} = CartState();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -45,7 +48,7 @@ export default function Header() {
       let args = arguments;
       clearTimeout(timer);
       timer = setTimeout(() => {
-        handleChange.apply(context, args);
+        func.apply(context, args);
       }, delay);
     };
   };
@@ -80,7 +83,7 @@ export default function Header() {
           {/* <Link to="cart"> */}
           <span style={{ color: "white" }}>
             <BsCartFill className="icons" />
-            <span className="badge">{}</span>
+            <span className="badge">{cart.length}</span>
           </span>
           <Link to="user">
             <FaUserCircle className="icons" />
