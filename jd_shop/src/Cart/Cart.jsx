@@ -52,7 +52,7 @@ const Cart = () => {
           </>
         )}
       </div>
-      {cart.length !== 0 && <div className="sum">${total}</div>}
+      {cart.length !== 0 && <div className="sum">Total Price: ${total}</div>}
     </>
   );
 };
