@@ -94,37 +94,56 @@ const Home = () => {
 
   return (
     <>
-      {items.length !== 0 ? (<>
-        <Categories />
-        <div className="items">
-          {items.map((itm) => (
-            <div className="card" key={itm.id}>
-              <img
-                onClick={() => {
-                  toProductDetails(itm);
-                }}
-                src={itm.image}
-                alt="Avatar"
-                style={{ width: "100%" }}
-              />
-              <div className="container">
-                <b>
-                  <p className="price">${itm.price}</p>
-                </b>
-                <p className="title">{itm.title}</p>
+      {items.length !== 0 ? (
+        <>
+          <Categories />
+          <div className="items">
+            {items.map((itm) => (
+              <div className="card" key={itm.id}>
+                <img
+                  onClick={() => {
+                    toProductDetails(itm);
+                  }}
+                  src={itm.image}
+                  alt="Avatar"
+                  style={{ width: "100%" }}
+                />
+                <div className="container">
+                  <b>
+                    <p className="price">${itm.price}</p>
+                  </b>
+                  <p className="title">{itm.title}</p>
+                </div>
+                {cart.some((p) => {
+                  return p.id === itm.id;
+                }) ? (
+                  <button
+                    style={{ backgroundColor: "Crimson" }}
+                    onClick={() => {
+                      setCart(
+                        cart.filter((c) => {
+                          return c.id !== itm.id;
+                        })
+                      );
+                    }}
+                  >
+                    Remove
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setCart([...cart, itm]);
+                      // console.log(cart);
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                )}
               </div>
-              <button
-                onClick={() => {
-                  setCart([...cart, itm]);
-                  // console.log(cart);
-                }}
-              >
-                Add to Cart
-              </button>
-            </div>
-          ))}
-        </div>
-      </>) : (
+            ))}
+          </div>
+        </>
+      ) : (
         <div className="items">
           <Loader size={"large"} />
         </div>
