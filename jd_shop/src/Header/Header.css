@@ -16,9 +16,10 @@
 }
 
 .search-input {
-  height: 5vh;
+  height: 10vh;
   flex: 5;
   outline: 0;
+  /* padding:10px; */
   border-radius: 150px;
 }
 

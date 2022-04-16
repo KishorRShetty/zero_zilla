@@ -22,7 +22,7 @@
     align-self: flex-end; */
   margin: 5px auto auto auto;
   justify-content: space-evenly;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   font-weight: bold;
   font-size: larger;
@@ -63,10 +63,16 @@
   height: 270px;
 }
 
-.delete{
-    font-size: x-large;
-    cursor: pointer;
+.delete,
+.add,
+.remove {
+  font-size: x-large;
+  cursor: pointer;
 }
-.delete:hover{
-    color:red;
+.delete:hover,
+.remove:hover {
+  color: red;
+}
+.add:hover {
+  color: ForestGreen;
 }

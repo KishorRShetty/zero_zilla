@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { CartState } from "../Context";
 import { MdDelete } from "react-icons/md";
+import { IoAddCircleOutline } from "react-icons/io5";
+import { IoRemoveCircleOutline } from "react-icons/io5";
 
 const Cart = () => {
   const { cart, setCart } = CartState();
@@ -32,7 +34,10 @@ const Cart = () => {
                       <img className="rounImg" src={itm.image} alt="Avatar" />
                       <p>${itm.price}</p>
                       <p className="title">{itm.title}</p>
-                      <p
+                      <span className="remove">
+                        <IoRemoveCircleOutline />
+                      </span>
+                      <span
                         className="delete"
                         onClick={() => {
                           setCart(
@@ -43,7 +48,10 @@ const Cart = () => {
                         }}
                       >
                         <MdDelete />
-                      </p>
+                      </span>
+                      <span className="add">
+                        <IoAddCircleOutline />
+                      </span>
                     </div>
                   </div>
                 );
