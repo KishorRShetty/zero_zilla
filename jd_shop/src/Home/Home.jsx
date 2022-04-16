@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Home.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
-import { CartState } from "../Cart/Cart";
+import { CartState } from "../Context";
 
 const Home = () => {
   const resultsPerPage = 6;
@@ -14,7 +14,7 @@ const Home = () => {
   const [total, setTotal] = useState(0);
   const [infinite, setInfinite] = useState(false);
 
-  const {cart,setCart} = CartState();
+  const { cart, setCart } = CartState();
   // console.log(CartState());
 
   // const { pathname } = useLocation();
@@ -111,7 +111,14 @@ const Home = () => {
                 </b>
                 <p className="title">{itm.title}</p>
               </div>
-              <button onClick={()=>{setCart([...cart,itm]); console.log(cart)}}>Add to Cart</button>
+              <button
+                onClick={() => {
+                  setCart([...cart, itm]);
+                  // console.log(cart);
+                }}
+              >
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>

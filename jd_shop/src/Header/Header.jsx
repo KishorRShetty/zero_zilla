@@ -5,13 +5,12 @@ import { FaUserCircle } from "react-icons/fa";
 import "./Header.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { CartState } from "../Cart/Cart";
-
+import { CartState } from "../Context";
 
 export default function Header() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState([]);
-  const {cart} = CartState();
+  const { cart } = CartState();
 
   useEffect(() => {
     async function fetchProducts() {
