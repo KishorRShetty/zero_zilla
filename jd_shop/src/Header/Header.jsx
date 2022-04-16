@@ -3,16 +3,18 @@ import logo from "../logo.svg";
 import { BsCartFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import "./Header.css";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { CartContext } from "../Cart/Cart";
+import { CartState } from "../Cart/Cart";
 
 export default function Header() {
-  const { count } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState([]);
 
+  const {cart} = CartState();
+
   useEffect(() => {
+    // console.log(cart);
     async function fetchProducts() {
       const requestProducts = await axios.get(
         "https://fakestoreapi.com/products"
@@ -82,7 +84,7 @@ export default function Header() {
           {/* <Link to="cart"> */}
           <Link to="cart">
             <BsCartFill className="icons" />
-            <span className="badge">{count}</span>
+            <span className="badge">{cart.length}</span>
           </Link>
           <Link to="user">
             <FaUserCircle className="icons" />

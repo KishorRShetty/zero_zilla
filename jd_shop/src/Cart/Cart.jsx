@@ -1,10 +1,17 @@
-import React, { createContext, useState } from "react";
-import Header from "../Header/Header";
-export const CartContext = createContext();
+import React, { createContext, useContext, useState } from "react";
+const CartContext = createContext();
 
-const Cart = () => {
-  const [count, setCount] = useState(0);
-  return <div>Cart</div>;
+const Cart = ({ children }) => {
+  const [cart, setCart] = useState([]);
+  return (
+    <CartContext.Provider value={{ cart, setCart }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 export default Cart;
+
+export const CartState = () =>{
+  return useContext(CartContext);
+}
