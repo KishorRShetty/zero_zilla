@@ -4,6 +4,7 @@ import "./Home.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import { CartState } from "../Context";
+import Categories from "../Categories/Categories";
 
 const Home = () => {
   const resultsPerPage = 6;
@@ -93,7 +94,8 @@ const Home = () => {
 
   return (
     <>
-      {items.length !== 0 ? (
+      {items.length !== 0 ? (<>
+        <Categories />
         <div className="items">
           {items.map((itm) => (
             <div className="card" key={itm.id}>
@@ -122,7 +124,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-      ) : (
+      </>) : (
         <div className="items">
           <Loader size={"large"} />
         </div>

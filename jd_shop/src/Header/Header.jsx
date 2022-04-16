@@ -79,11 +79,12 @@ export default function Header() {
           )}
         </div>
         <nav className="nav">
-          {/* <Link to="cart"> */}
-          <span style={{ color: "white" }}>
-            <BsCartFill className="icons" />
-            <span className="badge">{cart.length}</span>
-          </span>
+          <Link to="cart">
+            <span style={{ color: "white" }}>
+              <BsCartFill className="icons" />
+              <span className="badge">{cart.length}</span>
+            </span>
+          </Link>
           <Link to="user">
             <FaUserCircle className="icons" />
           </Link>
