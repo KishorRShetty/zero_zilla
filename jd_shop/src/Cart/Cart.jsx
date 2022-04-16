@@ -12,7 +12,7 @@ const Cart = () => {
   useEffect(() => {
     setTotal(
       cart.reduce((acc, curr) => {
-        return acc + Number(curr.price);
+        return acc + Number(curr.price)*curr.qty;
       }, 0)
     );
   }, [cart]);
@@ -32,9 +32,19 @@ const Cart = () => {
                   <div className="column">
                     <div className="cartcard">
                       <img className="rounImg" src={itm.image} alt="Avatar" />
-                      <p>${itm.price}</p>
+                      <p>Quantity: {itm.qty}</p>
+                      <p>${(itm.qty * itm.price).toFixed(2)}</p>
                       <p className="title">{itm.title}</p>
-                      <span className="remove">
+                      <span
+                        className="remove"
+                        onClick={() => {
+                          setCart(
+                            cart.filter((p) => {
+                              return p.id === itm.id ? p.qty -= 1 : p.qty;
+                            })
+                          );
+                        }}
+                      >
                         <IoRemoveCircleOutline />
                       </span>
                       <span
@@ -49,7 +59,16 @@ const Cart = () => {
                       >
                         <MdDelete />
                       </span>
-                      <span className="add">
+                      <span
+                        className="add"
+                        onClick={() => {
+                          setCart(
+                            cart.filter((p) => {
+                              return p.id === itm.id ? p.qty += 1 : p.qty;
+                            })
+                          );
+                        }}
+                      >
                         <IoAddCircleOutline />
                       </span>
                     </div>
@@ -60,7 +79,7 @@ const Cart = () => {
           </>
         )}
       </div>
-      {cart.length !== 0 && <div className="sum">Total Price: ${total}</div>}
+      {cart.length !== 0 && <div className="sum">Total Price: ${Number(total).toFixed(2)}</div>}
     </>
   );
 };

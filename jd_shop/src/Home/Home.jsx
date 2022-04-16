@@ -132,7 +132,7 @@ const Home = () => {
                 ) : (
                   <button
                     onClick={() => {
-                      setCart([...cart, itm]);
+                      setCart([...cart, { ...itm, qty: 1 }]);
                       // console.log(cart);
                     }}
                   >

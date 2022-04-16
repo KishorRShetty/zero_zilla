@@ -12,6 +12,7 @@
 }
 
 .sum {
+  margin-top: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: #f1f1f1;
   height: 10vh;
@@ -52,6 +53,9 @@
     width: 100%;
     /* margin-bottom: 20px; */
   }
+  .cart, .sum {
+    width: 100%;
+  }
 }
 
 /* Style the counter cards */
@@ -60,7 +64,7 @@
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
-  height: 270px;
+  height: 300px;
 }
 
 .delete,

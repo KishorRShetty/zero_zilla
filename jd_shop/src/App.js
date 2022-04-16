@@ -4,9 +4,7 @@ import Header from "./Header/Header";
 import User from "./User/User";
 import Home from "./Home/Home";
 import ProductDetails from "./ProductDetails/ProductDetails";
-
 import ProductById from "./ProductById/ProductById";
-import Categories from "./Categories/Categories";
 import Cart from "./Cart/Cart";
 
 function App() {

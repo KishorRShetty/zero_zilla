@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./ProductById.css";
 import Loader from "../Loader/Loader";
+import { CartState } from "../Context";
 
 function ProductById() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
+  const { cart, setCart } = CartState();
 
   useEffect(() => {
     async function getProduct() {
@@ -31,11 +33,31 @@ function ProductById() {
             <h1>{product.title}</h1>
             <p className="detailsPrice">${product.price}</p>
             <p>{product.description}</p>
-            <button
-            //  onClick={() => setCount(count + 1)}
-            >
-              Add to Cart
-            </button>
+            {cart.some((p) => {
+                  return p.id === product.id;
+                }) ? (
+                  <button
+                    style={{ backgroundColor: "Crimson" }}
+                    onClick={() => {
+                      setCart(
+                        cart.filter((c) => {
+                          return c.id !== product.id;
+                        })
+                      );
+                    }}
+                  >
+                    Remove
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setCart([...cart, { ...product, qty: 1 }]);
+                      // console.log(cart);
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                )}
           </div>
         </div>
       ) : (
